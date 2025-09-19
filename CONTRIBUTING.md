@@ -22,6 +22,7 @@
 
 3. Push branch & open PR
    ```bash
+   git add "PathifyMapper\app\src\main\java\com\pathify\pathifymapper"
    git push -u origin feat/<feature-name>
 
 4. Rebase
