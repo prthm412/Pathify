@@ -1,5 +1,10 @@
 # Pathify Contribution Guide
 
+## Clone
+   ```bash
+   git clone https://github.com/prthm412/Pathify.git
+   ```
+
 ## Branching
 - Always branch from `main`.
 - Branch names: `feat/<feature-name>`, `fix/<bug-name>`, `chore/<misc>`.
