@@ -23,8 +23,10 @@ class ManageBuildingsActivity : AppCompatActivity() {
         store = JsonStore(this)
         state = store.loadState()
 
-        adapter = BuildingAdapter(state.buildings) {
-            // TODO: open BuildingDetailActivity in next step
+        adapter = BuildingAdapter(state.buildings) { b ->
+            val i = android.content.Intent(this, BuildingDetailActivity::class.java)
+            i.putExtra(BuildingDetailActivity.EXTRA_BUILDING_ID, b.id)
+            startActivity(i)
         }
         binding.recyclerBuildings.layoutManager = LinearLayoutManager(this)
         binding.recyclerBuildings.adapter = adapter
