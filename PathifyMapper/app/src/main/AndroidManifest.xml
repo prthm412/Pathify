@@ -9,6 +9,8 @@
         android:theme="@style/Theme.PathifyMapper">
         <activity android:name=".ui.BuildingDetailActivity"/>
 
+        <activity android:name=".ui.MapImportActivity"/>
+
         <activity android:name=".ui.ManageBuildingsActivity" />
 
         <activity android:name=".ui.MainActivity"

@@ -1,7 +1,7 @@
 package com.pathify.pathifymapper.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pathify.pathifymapper.data.JsonStore
@@ -11,6 +11,7 @@ import com.pathify.pathifymapper.model.Building
 import com.pathify.pathifymapper.model.FloorRef
 
 class BuildingDetailActivity : AppCompatActivity() {
+
     companion object {
         const val EXTRA_BUILDING_ID = "building_id"
     }
@@ -34,8 +35,12 @@ class BuildingDetailActivity : AppCompatActivity() {
 
         binding.tvTitle.text = building?.let { "${it.name}  •  ${it.id}" } ?: "Building"
 
-        adapter = FloorAdapter(building?.floors ?: mutableListOf()) {
-            // TODO: open MapImportActivity in the next step
+        // Name the lambda parameter so we can use it (floorRef)
+        adapter = FloorAdapter(building?.floors ?: mutableListOf()) { floorRef ->
+            val i = Intent(this, MapImportActivity::class.java)
+            i.putExtra(MapImportActivity.EXTRA_BUILDING_ID, building?.id)
+            i.putExtra(MapImportActivity.EXTRA_FLOOR_ID, floorRef.id)
+            startActivity(i)
         }
         binding.recyclerFloors.layoutManager = LinearLayoutManager(this)
         binding.recyclerFloors.adapter = adapter
